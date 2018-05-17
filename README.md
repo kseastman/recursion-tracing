@@ -2,13 +2,13 @@
 
 ## Definitions
 Define the following: 
-- Recursion
-- Recursive Case
-- Base Case
-- Activation Chain/Function Call Stack
-- Activation Record/Function Call
-- Infinite Recursion/Stack Overflow/Stack too deep
-- Tail Recursion
+- Recursion: Recursion is calling a method from inside of the method, similar to a loop.
+- Recursive Case: What you want your method to do during the unwind step, once the recursion is stopped and each layer of the stack is popped off and executed.
+- Base Case:  The 'stop' condition, the smallest possible, meaningful calculation that you can return from to solve a large problem.
+- Activation Chain/Function Call Stack: The stack of allocated memory holding each stage of a recursion.
+- Activation Record/Function Call: The individual pieces of allocated memory in the stack.
+- Infinite Recursion/Stack Overflow/Stack too deep: The potential pitfall if you forget to include a base case in your recursive function.
+- Tail Recursion: Tracking the eventual end calculation as part of the function call, allowing some compilers to utilize tail call optimization and reduce a recursive function's space complexity from linear to constant.
 
 ## Tracing through a recursive method. Time & Space complexity.
 ### Trace #1
@@ -23,10 +23,43 @@ end
 ```
 
 - What is mystery1(5)?
+5 is not == 1, so 5 + mystery1(n - 1 #=> 10) = 15
+4 is not == 1, so 4 + mystery1(n - 1 #=> 6) = 10
+3 is not == 1, so 3 + mystery1(n - 1 #=> 3) = 6
+2 is not == 1, so 2 + mystery1(n - 1 #=> 1) =  3
+1 IS == 1, so return 1
+
+unwind the stack
+
+Answer: 15
+
 - What is mystery1(10)?
+10 is not == 1, so 10 + mystery1(n - 1 #=> 45 ) = 55
+9 is not == 1, so 9 + mystery1(n - 1 #=> 36 ) = 45
+8 is not == 1, so 8 + mystery1(n - 1 #=> 28 ) = 36
+7 is not == 1, so 7 + mystery1(n - 1 #=> 21 ) = 28
+6 is not == 1, so 6 + mystery1(n - 1 #=> 15) = 21
+5 is not == 1, so 5 + mystery1(n - 1 #=> 10) = 15
+4 is not == 1, so 4 + mystery1(n - 1 #=> 6) = 10
+3 is not == 1, so 3 + mystery1(n - 1 #=> 3) = 6
+2 is not == 1, so 2 + mystery1(n - 1 #=> 1) =  3
+1 IS == 1, so return 1
+
+unwind the stack
+
+Answer: 55
+
+
 - What is mystery1(0)?
+0 is not == 1, so 0 + mystery1(n - 1 #=> ) =
+-1 is not == 1, so -1 ...
+
+stack overflow!
+
 - What is the time complexity of mystery1(n)?
+O(n)
 - What is the space complexity of mystery1(n)?
+O(n)
 
 ### Trace #2
 ```ruby
